@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 报修保单提交
+Route::post('/postRepair', 'RepairController@postRepair');
