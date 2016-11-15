@@ -7,9 +7,39 @@ use Illuminate\Http\Request;
 use App\Repair;
 use Validator;
 
+use Illuminate\Support\Facades\Auth;
+
 class RepairController extends Controller
 {
     public function __construct() {}
+
+    public function login() {
+        $data = request()->input();
+        // $remember = true;
+        if (Auth::attempt( ['name' => $data["name"], "password" => $data["password"]])) {
+            echo "true";
+            // if (Auth::viaRemember()) {
+            //     //
+            //     return Auth::user();
+            // }
+            if (Auth::check()) {
+                return "login";
+            } else {
+                return "logout";
+            }
+        } else {
+            echo "false";
+        }
+    }
+
+    public function someTest() {
+        echo Auth::user();
+        if (Auth::check()) {
+            return "login";
+        } else {
+            return "logout";
+        }
+    }
 
     // 验证规则
     private function rules() {
