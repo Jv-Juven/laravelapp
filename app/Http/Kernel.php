@@ -32,6 +32,11 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        //后台管理的中间件
+		'adminauth' => [
+            'App\Http\Middleware\AdminAuth'
+        ],
+
         'api' => [
             'throttle:60,1',
             'bindings',

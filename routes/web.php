@@ -26,3 +26,8 @@ Route::post('/postRepair', 'RepairController@postRepair');
 Route::post('/login', 'RepairController@login');
 // 其他测试
 Route::post('/someTest', 'RepairController@someTest');
+
+// 后台系统
+Route::group([ "namespace" => "Admin" ], function () {
+    Route::post("/register", "AdminControll@register")->middleware("adminauth");
+});
